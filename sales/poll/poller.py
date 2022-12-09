@@ -5,16 +5,21 @@ import time
 import json
 import requests
 
+
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
 # Import models from sales_rest, here.
+from sales_rest import models
+
 # from sales_rest.models import Something
+from sales_rest.models import AutomobileVO
+
 
 def poll():
     while True:
-        print('Sales poller polling for data')
+        print("Sales poller polling for data")
         try:
             # Write your polling logic, here
             pass
