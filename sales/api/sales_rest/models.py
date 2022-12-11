@@ -5,10 +5,8 @@ from django.urls import reverse
 
 
 class AutomobileVO(models.Model):
-    color = models.CharField(max_length=50, default=True)
-    year = models.PositiveSmallIntegerField(default=True)
     vin = models.CharField(max_length=17, unique=True)
-    href = models.CharField(max_length=200, null=True)
+    import_href = models.CharField(max_length=200, null=True)
 
 
 class SalesPerson(models.Model):

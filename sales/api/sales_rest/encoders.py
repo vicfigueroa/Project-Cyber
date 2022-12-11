@@ -20,9 +20,7 @@ class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
         "vin",
-        "href",
-        "color",
-        "year",
+        "import_href",
     ]
 
 
@@ -38,7 +36,7 @@ class CustomerEncoder(ModelEncoder):
 
 class SalesListEncoder(ModelEncoder):
     model = Sales
-    properties = ["automobile", "sales_person", "customer", "sales_price"]
+    properties = ["automobile", "sales_person", "customer", "sales_price", "id"]
     encoders = {
         "sales_person": SalesPersonEncoder(),
         "customer": CustomerEncoder(),

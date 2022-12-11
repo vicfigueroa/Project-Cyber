@@ -9,10 +9,18 @@ from .encoders import (
     SalesPersonEncoder,
     CustomerEncoder,
     SalesListEncoder,
+    AutomobileVOEncoder,
 )
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 import json
+
+
+@require_http_methods(["GET"])
+def api_list_autos(request):
+    if request.method == "GET":
+        autos = AutomobileVO.objects.all()
+        return JsonResponse({"autos": autos}, encoder=AutomobileVOEncoder)
 
 
 @require_http_methods(["GET", "POST"])
@@ -22,26 +30,18 @@ def api_list_sales(request):
         return JsonResponse({"sales": sales}, encoder=SalesListEncoder)
     else:
         content = json.loads(request.body)
-        employee_number = content["sales_person"]
-        sales_person = SalesPerson.objects.get(employee_number=employee_number)
-        content["sales_person"] = sales_person
-        customer = content["customer"]
-        customer = Customer.objects.get(id=customer)
+        customer = Customer.objects.get(id=content["customer"])
         content["customer"] = customer
-        vin = content["automobile"]
-        vin = AutomobileVO.objects.get(vin=vin)
-        content["automobile"] = vin
-        sale = Sales.objects.create(**content)
-        try:
-            return JsonResponse(
-                sale,
-                encoder=SalesListEncoder,
-                safe=False,
-            )
-        except:
-            response = JsonResponse({"message": "Sale could not be created"})
-            response.status_code = 400
-            return response
+        sales_person = SalesPerson.objects.get(employee_number=content["sales_person"])
+        content["sales_person"] = sales_person
+        automobile = AutomobileVO.objects.get(vin=content["automobile"])
+        content["automobile"] = automobile
+    sale = Sales.objects.create(**content)
+    return JsonResponse(
+        sale,
+        encoder=SalesListEncoder,
+        safe=False,
+    )
 
 
 @require_http_methods(["GET", "DELETE", "PUT"])

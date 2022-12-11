@@ -17,15 +17,31 @@ from sales_rest import models
 from sales_rest.models import AutomobileVO
 
 
+def get_automobiles():
+    response = requests.get("http://inventory-api:8000/api/automobiles")
+    content = json.loads(response.content)
+    if content["autos"]:
+        print("autos received")
+    for automobile in content["autos"]:
+        AutomobileVO.objects.update_or_create(
+            import_href=automobile["href"],
+            vin=automobile["vin"],
+            defaults={
+                "vin": automobile["vin"],
+            },
+        )
+        print(automobile)
+
+
 def poll():
     while True:
         print("Sales poller polling for data")
         try:
             # Write your polling logic, here
-            pass
+            get_automobiles()
         except Exception as e:
             print(e, file=sys.stderr)
-        time.sleep(60)
+        time.sleep(5)
 
 
 if __name__ == "__main__":
