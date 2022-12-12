@@ -29,6 +29,7 @@ def api_list_technician(request):
                 {"message": "No technician created"},
                 status = 400
             )
+            return response
 
 
 @require_http_methods(["GET", "DELETE", "PUT"])
