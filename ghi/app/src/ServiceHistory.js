@@ -33,7 +33,7 @@ export default function ServiceHistoryList() {
         <div className="row">
             <div className="mt-4">
                 <h1>Service History</h1>
-                <input icon="search" type="text" className="search-input" aria-label="Default example" placeholder="Search VIN" onChange={(event) =>
+                <input icon="search" type="text" className="search-input" aria-label="Default example" placeholder="VIN" onChange={(event) =>
                     {setSearchTerm(event.target.value)}}/>
             <table className="table table-striped">
                 <thead>

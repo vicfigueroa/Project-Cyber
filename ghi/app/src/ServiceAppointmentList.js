@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 
 
-export default function AppointmentList() {
+export default function ServiceAppointmentList() {
 
     const [appointments, setAppointments] = useState([]);
 
@@ -22,7 +22,7 @@ export default function AppointmentList() {
 
 
     async function deleteAppointment(id) {
-        alert('This appointment is now cancelled.')
+        alert('Appointment cancelled.')
         const url = `http://localhost:8080/api/appointments/${id}/`;
         const result = await fetch(url, { method: 'DELETE' });
         if (result.ok) {
