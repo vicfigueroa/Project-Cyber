@@ -4,7 +4,7 @@ class ServiceAppointmentForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            customer_name: '',
+            owner: '',
             vin: '',
             date_time: '',
             reason: '',
@@ -29,12 +29,13 @@ class ServiceAppointmentForm extends React.Component {
 
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
         const fetchConfig = {
-            method: "post",
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
         };
+        console.log(fetchConfig);
         const response = await fetch(appointmentUrl, fetchConfig);
         if (response.ok) {
             const newAppointment = await response.json();
@@ -122,7 +123,7 @@ class ServiceAppointmentForm extends React.Component {
                         <button className="btn btn-success">Create</button>
                         </form>
                         <div className={successClassName} id="success-message">
-                            Appointment has successfully been scheduled.
+                            Appointment has been scheduled.
                         </div>
                     </div>
                 </div>
