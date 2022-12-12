@@ -4,7 +4,7 @@ class ServiceAppointmentForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            owner: '',
+            customer_name: '',
             vin: '',
             date_time: '',
             reason: '',
