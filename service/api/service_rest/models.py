@@ -5,8 +5,6 @@ from django.db import models
 # Enter Technician, tech name an employer number
 
 class AutomobileVO(models.Model):
-    color = models.CharField(max_length=50)
-    year = models.PositiveSmallIntegerField()
     vin = models.CharField(max_length=17, unique=True)
     import_href = models.CharField(max_length=200, null=True)
 
@@ -23,8 +21,8 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
     vin = models.CharField(max_length=17)
-    owner = models.CharField(max_length=200)
-    date = models.CharField(max_length=100)
+    customer_name = models.CharField(max_length=200)
+    date_time = models.DateTimeField()
     reason = models.TextField()
     technician = models.ForeignKey(
         Technician,

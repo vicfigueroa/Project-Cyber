@@ -5,8 +5,7 @@ from .models import Technician, Appointment, AutomobileVO
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
-        "color",
-        "year",
+        "import_href"
         "vin",
     ]
 
@@ -24,8 +23,8 @@ class AppointmentListEncoder(ModelEncoder):
     properties = [
         "id",
         'vin',
-        'owner',
-        'date',
+        'customer_name',
+        'date_time',
         'reason',
         'technician',
         'vip',

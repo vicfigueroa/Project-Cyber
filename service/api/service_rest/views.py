@@ -29,6 +29,7 @@ def api_list_technician(request):
                 {"message": "No technician created"},
                 status = 400
             )
+            return response
 
 
 @require_http_methods(["GET", "DELETE", "PUT"])
@@ -60,6 +61,7 @@ def api_show_technicians(request, pk):
 
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
+    print("here")
     if request.method == "GET":
         appointment = Appointment.objects.all()
         return JsonResponse(
@@ -67,8 +69,10 @@ def api_list_appointments(request):
             encoder=AppointmentListEncoder,
         )
     else:
+        print("here 1")
         content = json.loads(request.body)
         try:
+            print("here 2")
 
             employee_number = content["technician"]
             technician = Technician.objects.get(employee_number=employee_number)
@@ -79,7 +83,9 @@ def api_list_appointments(request):
                 status=422,
             )
         try:
+            print("here 3")
             appointment = Appointment.objects.create(**content)
+            print(appointment)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentListEncoder,

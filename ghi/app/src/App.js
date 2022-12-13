@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import ManufacturerForm from './ManufacturerForm';
+import ServiceAppointmentForm from './ServiceAppointmentForm';
+import TechnicianForm from './TechnicianForm'
+import ServiceHistory from './ServiceHistory';
+import ServiceAppointmentList from './ServiceAppointmentList'; import ManufacturerForm from './ManufacturerForm';
 import VehicleModelForm from './VehicleModelForm';
 import AutomobileForm from './AutomobileForm';
 import SalespersonForm from './SalespersonForm';
@@ -34,6 +37,7 @@ function App() {
           <Route path="/vehicles/" element={<VehicleModelList />} />
           <Route path="/automobiles/" element={<AutomobileList />} />
         </Routes>
+
       </div>
     </BrowserRouter>
   );
