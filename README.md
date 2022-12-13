@@ -25,3 +25,32 @@ Within the Service Microservice, we've created 3 Models: AutomobileVO, Technicia
 
 Explain your models and integration with the inventory
 microservice, here.
+
+Sales (Backend)
+    Models:
+            Salesperson
+            AutomobileVO
+            Customer
+            Sales
+    Views:
+        Salesperson
+            Create a new salesperson
+            Update salesperson
+            Delete salesperson
+            List salesperson
+
+        Customer
+            Create a new customer
+            Update customer
+            Delete customer
+            List customer
+
+        Sales
+            Create a new sales
+            Update sales
+            Delete sales
+            List sales
+
+
+Sales(Frontend)
+    For sales frontend, we had to create javascript files and add them to the frontend of the application, so it can render the views that we wrote on the backend of the application.
