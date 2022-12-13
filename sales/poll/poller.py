@@ -30,7 +30,6 @@ def get_automobiles():
                 "vin": automobile["vin"],
             },
         )
-        print(automobile)
 
 
 def poll():
